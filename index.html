@@ -9,33 +9,77 @@
 </head>
 <body>
 
-    <div class="start-screen">
+    <div class="start-screen" id="start-screen">
         <h1>Jogo de Código - Front-End</h1>
-        <h2>Escolha a Dificuldade e a Quantidade de Fases</h2>
-        <p>Selecione um nível para começar o desafio.</p>
-        <p>Número de Fases (1 a 20):
-            <input type="number" id="num-questions" value="20" min="1" max="20" style="width: 60px;">
-        </p>
+        <p>Olá! Escolha como você gostaria de jogar.</p>
+        <div class="start-buttons">
+            <button onclick="playAnonymously()">Jogar Anonimamente</button>
+            <button onclick="showNameInput()">Jogar com Nome</button>
+        </div>
+        <div class="start-buttons">
+            <button onclick="showHistory() ">Ver Histórico</button>
+            <button onclick="showEmblemAlbum()">Ver Emblemas</button>
+        </div>
+    </div>
+
+    <div class="name-screen hidden" id="name-screen">
+        <h2>Digite seu nome</h2>
+        <input type="text" id="username-input" placeholder="Seu nome">
+        <p id="name-feedback" class="feedback-message"></p>
+        <div class="name-buttons">
+            <button onclick="setNameAndShowDifficulty()">Confirmar</button>
+            <button onclick="showStartScreen()">Voltar</button>
+        </div>
+    </div>
+
+    <div class="difficulty-screen hidden" id="difficulty-screen">
+        <h2>Selecione a Dificuldade</h2>
+        <p>Escolha o número de questões (1 a 20):</p>
+        <input type="number" id="num-questions" value="10" min="1" max="20">
+        <p id="num-questions-feedback" class="feedback-message"></p>
         <div class="difficulty-buttons">
             <button onclick="startGame('easy')">Fácil</button>
             <button onclick="startGame('medium')">Médio</button>
             <button onclick="startGame('hard')">Difícil</button>
         </div>
-        <p>
-            <b>Instruções:</b>
-            Em fases com múltiplas respostas, preencha cada caixa. Pressione **Enter** ou clique em "Verificar".
-        </p>
+        <button onclick="showStartScreen()">Voltar</button>
     </div>
 
-    <div class="game-container hidden">
+    <div class="game-container hidden" id="game-container">
         <h2 id="level-title"></h2>
         <p id="level-description"></p>
         <pre><code id="code-snippet" class="question-code"></code></pre>
         <div id="answer-inputs-container" class="answer-input-group"></div>
-        <button id="check-button" onclick="checkAnswer()">Verificar</button>
         <div id="feedback"></div>
+        <div id="explanation"></div>
+        <button id="check-button" onclick="checkAnswer()">Verificar</button>
+        <button id="next-button" class="hidden" onclick="nextLevel()">Próxima Questão</button>
+        <div class="game-info-bar">
+            <span id="score-display"></span>
+            <button onclick="showStartScreen()">Sair</button>
+        </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <div class="end-screen hidden" id="end-screen">
+        <h1>Fim de Jogo!</h1>
+        <p id="end-message"></p>
+        <p id="final-score"></p>
+        <button onclick="showHistory()">Ver Histórico</button>
+        <button onclick="showStartScreen()">Jogar Novamente</button>
+    </div>
+
+    <div class="history-screen hidden" id="history-screen">
+        <h1>Histórico de Jogos</h1>
+        <div id="history-list"></div>
+        <button onclick="showStartScreen()">Voltar ao Início</button>
+    </div>
+
+    <div class="emblem-album hidden" id="emblem-album">
+        <h2>Álbum de Emblemas</h2>
+        <div id="emblem-container" class="emblem-container"></div>
+        <button onclick="showStartScreen()">Voltar ao Início</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
