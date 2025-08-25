@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="icon/png" href="img/code.png">
 </head>
+
 <body>
 
     <div class="start-screen" id="start-screen">
@@ -33,14 +35,19 @@
     </div>
 
     <div class="difficulty-screen hidden" id="difficulty-screen">
-        <h2>Selecione a Dificuldade</h2>
-        <p>Escolha o número de questões (1 a 20):</p>
-        <input type="number" id="num-questions" value="10" min="1" max="20">
-        <p id="num-questions-feedback" class="feedback-message"></p>
+        <h2>Escolha a Dificuldade e o Número de Questões</h2>
+
+        <div class="num-questions-group">
+            <label for="num-questions">Número de Questões (1-20):</label>
+            <input type="number" id="num-questions" min="1" max="20" value="10">
+            <p id="num-questions-feedback" class="feedback-message"></p>
+        </div>
+
         <div class="difficulty-buttons">
-            <button onclick="startGame('easy')">Fácil</button>
-            <button onclick="startGame('medium')">Médio</button>
-            <button onclick="startGame('hard')">Difícil</button>
+            <button onclick="startGame('facil')">Fácil</button>
+            <button onclick="startGame('medio')">Médio</button>
+            <button onclick="startGame('dificil')">Difícil</button>
+            <button onclick="startGame('especialista')">Especialista</button>
         </div>
         <button onclick="showStartScreen()">Voltar</button>
     </div>
@@ -53,6 +60,7 @@
         <div id="feedback"></div>
         <div id="explanation"></div>
         <button id="check-button" onclick="checkAnswer()">Verificar</button>
+        <button id="skip-button" class="hidden" onclick="skipLevel()">Pular</button>
         <button id="next-button" class="hidden" onclick="nextLevel()">Próxima Questão</button>
         <div class="game-info-bar">
             <span id="score-display"></span>
@@ -75,11 +83,12 @@
     </div>
 
     <div class="emblem-album hidden" id="emblem-album">
-        <h2>Álbum de Emblemas</h2>
-        <div id="emblem-container" class="emblem-container"></div>
-        <button onclick="showStartScreen()">Voltar ao Início</button>
+        <h1>Álbum de Emblemas</h1>
+        <div id="emblem-container"></div>
+        <button onclick="showStartScreen()">Voltar</button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>
